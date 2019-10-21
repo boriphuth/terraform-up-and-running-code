@@ -7,7 +7,7 @@
 // }
 
 variable "instance_count" {
-  default = "1"
+  default = "10"
 }
 
 variable "instance_tags" {
