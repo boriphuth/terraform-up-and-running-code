@@ -75,11 +75,27 @@ resource "aws_instance" "my-instance" {
   "${aws_security_group.sg_8080.id}"]
 
   tags = {
-    Name  = "${element(var.instance_tags, count.index)}"
+    // Name  = "${element(var.instance_tags, count.index)}"
+    Name  = "Terraform-${count.index + 1}"
     Batch = "5AM"
   }
 
   provisioner "remote-exec" {
+    // inline = [
+    //   "sudo wget -O Dynatrace-OneAgent-Linux-1.177.216.sh 'https://lwg09078.live.dynatrace.com/api/v1/deployment/installer/agent/unix/default/latest?Api-Token=l6z94tfgS3WgKFpvEYnbf&arch=x86&flavor=default'",
+    //   "sudo /bin/sh Dynatrace-OneAgent-Linux-1.177.216.sh APP_LOG_CONTENT_ACCESS=1 INFRA_ONLY=0"
+    // ]
     scripts = ["./setup-lwg09078.sh"]
+
+    connection {
+      host = "${self.public_ip}"
+      type = "ssh"
+      user = "ubuntu"
+      private_key = "${file("./PRIVATE.pem")}"
+      timeout = "3m"
+      agent = false
+    }
+
   }
+
 }

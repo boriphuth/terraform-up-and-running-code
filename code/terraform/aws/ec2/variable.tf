@@ -6,6 +6,15 @@
 //   }
 // }
 
+variable "instance_count" {
+  default = "1"
+}
+
+variable "instance_tags" {
+  type = "list"
+  default = ["Terraform-1", "Terraform-2", "Terraform-3", "Terraform-4", "Terraform-5", "Terraform-6", "Terraform-7", "Terraform-8", "Terraform-9", "Terraform-10"]
+}
+
 variable "aws_region" {
   default = "ap-southeast-1"
 }
@@ -21,15 +30,6 @@ variable "instance_ami" {
 variable "instance_type" {
   description = "EC2 instance type"
   default = "t2.micro"
-}
-
-variable "instance_count" {
-  default = "4"
-}
-
-variable "instance_tags" {
-  type = "list"
-  default = ["Terraform-1", "Terraform-2", "Terraform-3", "Terraform-4"]
 }
 
 variable "key_name" {

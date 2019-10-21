@@ -2,3 +2,5 @@
 *.tfstate.backup
 .terraform
 *.iml
+code/terraform/aws/ec2/.terraform.tfstate.lock.info
+code/terraform/aws/ec2/PRIVATE.pem

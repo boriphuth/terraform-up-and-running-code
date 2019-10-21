@@ -41,4 +41,7 @@ aws_access_key_id = Access key ID
 aws_secret_access_key = Secret access key
 
 $ aws configure
+
+$ terraform apply -auto-approve
+4 terraform destroy -auto-approve
 ```
